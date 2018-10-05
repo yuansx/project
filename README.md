@@ -4,6 +4,7 @@
 > * [1.环境](#main-chapter-1)
 > * [2.TSeer测试代码](#main-chapter-2)
 > * [3.C++测试代码](#main-chapter-3)
+> * [4.Python测试代码](#main-chapter-4)
 
 # 1.环境 <a id="main-chapter-1"></a>
     dev-env
@@ -13,4 +14,7 @@
 
 # 3.C++测试代码 <a id="main-chapter-3"></a>
     cpp
+
+# 4.Python测试代码 <a id="main-chapter-4"></a>
+    python
 
