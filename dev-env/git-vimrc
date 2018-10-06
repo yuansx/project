@@ -1,0 +1,20 @@
+set nu
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,chinese,cp936
+
+language messages en_US
+filetype on
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+syntax enable
+syntax on
+set showmatch
+set smartindent
+set autoindent
+set ai!
+set cursorline
+
