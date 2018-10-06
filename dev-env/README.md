@@ -2,5 +2,6 @@
 
 文件名 | 功能
 -------|---------
-.vimrc | vim配置
+.vimrc | Linux vim配置
+git-vimrc | windows Git自带vim配置 
 
