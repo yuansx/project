@@ -24,13 +24,9 @@ class Alien(Sprite):
             return False
     
     def update(self):
-        if self.check_edges():
-            self.ai_settings.alien_direct = 'right'
-        else:
-            self.ai_settings.alien_direct = 'left'
-        if self.ai_settings.alien_direct == 'right':
+        if self.ai_settings.alien_direct_right:
             self.x += self.ai_settings.alien_speed
-        elif self.ai_settings.alien_direct == 'left':
+        else:
             self.x -= self.ai_settings.alien_speed
         self.rect.x = int(self.x)
 

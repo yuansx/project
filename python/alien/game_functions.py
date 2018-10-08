@@ -41,10 +41,19 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
         bullet.draw_bullet()
     pygame.display.flip()
 
-def update_bullet(bullets):
+def check_bullet_alien_collisions(ai_settings, screen, bullets, aliens, ship):
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+    if len(aliens) == 0:
+        bullets.empty()
+        create_fleet(ai_settings, screen, aliens, ship)
+
+def update_bullet(ai_settings, screen, bullets, aliens, ship):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+    bullets.update()
+    check_bullet_alien_collisions(ai_settings, screen, bullets, aliens, ship)
+
 def get_number_aliens_x(screen_width, alien_width):
     available_space_x = screen_width - 2 * alien_width
     return int(available_space_x / (2 * alien_width))
@@ -69,6 +78,19 @@ def create_fleet(ai_settings, screen, aliens, ship):
         for num in range(numbers):
             create_alien(ai_settings, screen, aliens, num, row)
 
+def change_fleet_direction(aliens):
+    for alien in aliens.sprites():
+        alien.rect.y += alien.ai_settings.alien_drop_speed
+    alien.ai_settings.alien_direct_right = not alien.ai_settings.alien_direct_right
+
+def check_fleet_edges(aliens):
+    for alien in aliens.copy():
+        if alien.check_edges():
+            return True
+    return False
+
 def update_alien(aliens):
+    if check_fleet_edges(aliens):
+        change_fleet_direction(aliens)
     aliens.update()
 
