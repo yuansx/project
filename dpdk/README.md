@@ -1,13 +1,13 @@
 这个部分只是介绍我安装dpdk，以及学习的过程
 
-#目录
+# 目录
 > * [1.环境准备](#main-chapter-1)
 > * [2.编译安装](#main-chapter-2)
 
 # 1. 环境准备 <a id="main-chapter-1"></a>
 ## 1.1 操作系统安装
     使用virtualBox安装CentOS-7-x86_64-Minimal-1804.iso
-    内存2G，CPU 2核，磁盘80G，3张网卡(nat+2host)
+    内存2G，CPU 2核，磁盘80G，4张网卡(nat+3host)
 
 ## 1.2 基本软件安装及网络配置
 ### 1.2.1 简单把网络搞通，能够上网
@@ -73,5 +73,23 @@ mkdir /root/src ; cd /root/src; git clone -b v18.08 https://github.com/dpdk/dpdk
 ./usertools/dpdk-setup.sh
 ```
 选择15 --> [15] x86_64-native-linuxapp-gcc
+
 选择18 --> [18] Insert IGB UIO module
 
+选择21 --> [21] Setup hugepage mappings for non-NUMA systems
+
+选择24 --> [24] Bind Ethernet/Crypto device to IGB UIO module  设置第3和第4张host网卡
+
+选择35 --> [35] Exit Script
+
+打开/etc/profile文件，在最后添加
+```
+export RTE_SDK=/root/src/dpdk
+export RTE_TARGET=x86_64-native-linuxapp-gcc
+```
+至此dpdk编译安装，环境设置完成，跑第一个hellworld用例程序
+```
+cd /root/src/dpdk/examples/helloworld/
+make
+./build/helloworld
+```
