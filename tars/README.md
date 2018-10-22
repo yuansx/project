@@ -33,7 +33,10 @@ bash /usr/local/app/tars/tars_install.sh
 ```
 拉起tars基础框架的进程
 
-至此完成tars基础的服务安装，后面跟着install.zh.md文档的4.4节部署其他服务即可
+至此完成tars基础的服务安装，后面跟着install.zh.md文档的4.4节部署其他服务即可，其他服务安装包路径
+```
+/root/src/tars/framework/build/
+```
 
 # 3. 注意事项 <a id="main-chapter-3"></a>
 ## 3.1 ip地址变换，假如使用的地址是1.1.1.1
