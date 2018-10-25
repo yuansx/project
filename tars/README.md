@@ -36,6 +36,7 @@ bash /usr/local/app/tars/tars_install.sh
 至此完成tars基础的服务安装，后面跟着install.zh.md文档的4.4节部署其他服务即可
 
 # 3. 注意事项 <a id="main-chapter-3"></a>
+
 ## 3.1 ip地址变换，假如使用的地址是1.1.1.1
 修改/sbin/tars_init.sh文件，把
 ```
@@ -45,6 +46,7 @@ MachineIp=`ifconfig eth0 | grep inet | awk '{print $2}'`
 ```
 MachineIp=1.1.1.1
 ```
+
 ## 3.2 开启了ipv6功能，执行脚本报错
 修改/sbin/tars_init.sh文件，把
 ```
@@ -53,5 +55,10 @@ MachineIp=`ifconfig eth0 | grep inet | awk '{print $2}'`
 修改为
 ```
 MachineIp=`ifconfig eth0 | grep inet | awk '{print $2}' | head -1`
+```
+
+## 3.3 其他服务的发布包路径
+```
+/root/src/tars/framework/build/
 ```
 
