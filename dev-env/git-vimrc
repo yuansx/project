@@ -8,6 +8,7 @@ language messages en_US
 filetype on
 filetype plugin indent on
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 syntax enable
@@ -17,4 +18,5 @@ set smartindent
 set autoindent
 set ai!
 set cursorline
+set insearch
 
