@@ -4,4 +4,10 @@
 -------|---------
 .vimrc | Linux vim配置
 git-vimrc | windows Git自带vim配置 
+.pythonstartup | Linux python自动补全配置
+
+环境变量添加
+```
+PYTHONSTARTUP=~/.pythonstartup
+```
 
