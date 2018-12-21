@@ -10,7 +10,7 @@ class Settings():
         self.bullet_color = (60, 60, 60)
         self.bullet_allowed = 3
         self.alien_speed = 0.3
-        self.alien_drop_speed = 30
+        self.alien_drop_speed = 50
         self.alien_direct_right = True
         self.ship_limit = 3
 

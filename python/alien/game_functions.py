@@ -89,15 +89,18 @@ def check_fleet_edges(aliens):
             return True
     return False
 
-def ship_hit(stats):
+def ship_hit(ai_settings, screen, aliens, ship, stats):
     if stats.ships_left > 0:
         stats.ships_left -= 1
+        ship.center_ship(screen)
+        aliens.empty()
+        create_fleet(ai_settings, screen, aliens, ship)
     else:
         stats.game_active = False
-def update_alien(aliens, ship, stats):
+def update_alien(ai_settings, screen, aliens, ship, stats):
     if check_fleet_edges(aliens):
         change_fleet_direction(aliens)
     aliens.update()
     if pygame.sprite.spritecollideany(ship, aliens):
-        ship_hit(stats)
+        ship_hit(ai_settings, screen, aliens, ship, stats)
 
