@@ -12,7 +12,7 @@ chmod 777 /var/jenkins_node
 
 ## 1.2 拉取jenkins镜像：docker pull jenkins。或者拉取并运行
 ```
-docker run -d --name xiao_jenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_node:/var/jenkins_home jenkins
+docker run -d --name xiao_jenkins -p 8080:8080 -p 50000:50000 --privileged -v /var/jenkins_node:/var/jenkins_home jenkins
 ```
 
 ## 1.3 打开浏览器http://{your_ip}:8080，运行
