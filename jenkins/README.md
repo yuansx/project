@@ -20,6 +20,11 @@ docker run -d --name xiao_jenkins -p 8080:8080 -p 50000:50000 --privileged -v /v
 
 ## 1.4 获取admin密码
 ```
+方法1：（宿主机执行）
+cat /var/jenkins_node/secrets/initialAdminPassword
+方法2：（宿主机执行）
+docker logs xiao_jenkins
+方法3：（容器内部执行）
 cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
