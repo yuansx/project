@@ -6,8 +6,9 @@
 # 1. jenkins安装
 ## 1.1 创建目录，添加读写权限
 ```
-mkdir -p /var/jenkins_node
-chmod 777 /var/jenkins_node
+mkdir -p /var/jenkins_node     #创建目录
+chmod 777 /var/jenkins_node    #赋予所有用户拥有这个目录的可读、可写、可执行权限
+chown 1000:1000 /var/jenkins_node #将目录的拥有者改为uid为1000的用户(jenkins用户的uid是1000)
 ```
 
 ## 1.2 拉取jenkins镜像：docker pull jenkins。或者拉取并运行
