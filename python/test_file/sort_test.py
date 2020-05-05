@@ -3,6 +3,7 @@
 
 import random
 import sys
+#sys.setrecursionlimit(100)
 
 def select_sort(data, comp=lambda x, y: x < y):
     cycle_cnt = 0
@@ -65,6 +66,25 @@ def merge_sort(data, comp=lambda x, y: x < y):
     return _merge_sort(data[:], comp)
 
 
+def quick_sort(data, comp=lambda x, y: x < y):
+    def _partition(data, start, end, comp):
+        pivot = data[end]
+        i = start
+        for j in range(start, end):
+            if comp(data[j], pivot):
+                data[i], data[j] = data[j], data[i]
+                i += 1
+        data[i], data[end] = data[end], data[i]
+        return i
+    def _quick_sort(data, start, end, comp):
+        if start < end:
+            pos = _partition(data, start, end, comp)
+            _quick_sort(data, start, pos - 1, comp)
+            _quick_sort(data, pos + 1, end, comp)
+    data = data[:]
+    _quick_sort(data, 0, len(data) - 1, comp)
+    return data
+
 if __name__ == '__main__':
 #    rand_list = [random.randint(1, 100) for i in range(10)]
     rand_list = random.sample(range(1, 100), 10)
@@ -72,4 +92,5 @@ if __name__ == '__main__':
     print(select_sort(rand_list))
     print(bubble_sort(rand_list))
     print(merge_sort(rand_list))
+    print(quick_sort(rand_list))
 
