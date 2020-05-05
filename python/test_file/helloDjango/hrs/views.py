@@ -11,8 +11,11 @@ depts_list = [
 ]
 
 
-def index(request):
-    #return HttpResponse('<h1>Hello Derek!!</h1>')
+def index1(request):
+    return HttpResponse('<h1>Hello Derek!!</h1>')
+
+
+def index2(request):
     output = StringIO()
     output.write('<html>\n')
     output.write('<head>\n')
@@ -38,4 +41,8 @@ def index(request):
     output.write('</body>\n')
     output.write('</html>\n')
     return HttpResponse(output.getvalue())
+
+
+def index(request):
+    return render(request, 'index.html', {'depts_list': depts_list})
 
