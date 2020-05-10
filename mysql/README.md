@@ -12,6 +12,7 @@ yum localinstall -y mysql57-community-release-el7-7.noarch.rpm
 ## 1.2 安装启动MySQL
 ```
 yum install -y mysql-community-server
+yum install -y mariabd-devel
 service mysqld start
 ```
 
