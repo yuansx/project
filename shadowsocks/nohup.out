@@ -1,3 +1,0 @@
-INFO: loading config from /etc/shadowsocks.json
-2020-01-13 17:36:21 INFO     loading libcrypto from libcrypto.so.10
-2020-01-13 17:36:21 INFO     starting server at 0.0.0.0:7878
