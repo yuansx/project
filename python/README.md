@@ -22,7 +22,7 @@ cd helloworld
 python3 manage.py runserver [ip:port]
 python3 manage.py startapp test
 python3 manage.py migrate
-python3 manage.py makemigration hello
+python3 manage.py makemigrations hello
 python3 manage.py createsuperuser
 ```
 
