@@ -58,3 +58,10 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Derek@12
 mysql很变态把password字段变成 authentication_string，然后密码策略也严谨了show variables like 'validate_password%';查看密码策略
 ```
 
+# 4. 创建远程用户
+```
+CREATE USER 'root'@'%' IDENTIFIED BY 'Derek@12345';
+GRANT ALL PRIVILIEGES ON *.* TO 'root'@'%';
+CREATE USER 'read'@'%' IDENFIFIED BY 'Read@12345';
+GRANT SELECT ON test.test TO 'read'@'%';
+```
