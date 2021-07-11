@@ -18,5 +18,5 @@ set smartindent
 set autoindent
 set ai!
 set cursorline
-set insearch
+set incsearch
 
