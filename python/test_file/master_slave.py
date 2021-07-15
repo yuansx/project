@@ -3,6 +3,7 @@
 
 from multiprocessing.managers import BaseManager
 from multiprocessing import Queue
+import queue
 import os
 from random import randint
 
@@ -28,7 +29,7 @@ def server():
         print(n)
         task.put(n)
     for i in range(10):
-        r = result_queue.get(timeout=10)
+        r = result.get(timeout=10)
         print(r)
     manager.shutdown()
 
@@ -45,8 +46,11 @@ def worker(server_ip='127.0.0.1'):
             n = task.get(timeout=1)
             print(n)
             result.put('{0} + {1} = {2}'.format(n, n, n + n))
-        except Queue.Empty:
+        except queue.Empty:
             print('task queue is empty')
+            break
+        except EOFError:
+            print('task queue is shutdown')
             break
 
 
