@@ -63,6 +63,7 @@ sysctl --system
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 yum install -y docker-ce
+systemctl start docker
 ```
 
 # 7. docker设置并启动
@@ -93,6 +94,8 @@ EOF
 ```
 ```
 yum install kubeadm-1.23.1-0 kubectl-1.23.1-0 kubelet-1.23.1-0 --disableexcludes=kubernetes -y
+systemctl enable kubelet
+systemctl start kubelet
 ```
 安装最新版本，好像kubernetes与docker不兼容
 
@@ -161,5 +164,17 @@ kubectl apply -f kube-flannel.yml
 # 14. node机器上
 执行步骤1-8后
 ```
-kubeadm join --token d38a01.13653e584ccc1980 192.168.0.9:6443
+kubeadm join --discovery-token-unsafe-skip-ca-verification --token d38a01.13653e584ccc1980 192.168.0.9:6443
 ```
+执行步骤12设置，注意此时配置文件名为/etc/kubernetes/kubelet.conf
+
+# 15. 查看安装情况
+```
+kubectl get node
+kubectl get pod --all-namespaces
+```
+看到node短时间是NotReady，看pod情况对应执行
+```
+kubectl describe pod kube-flannel-ds-nwcpq --namespace=kube-system
+```
+看到拉去k8s对应镜像失败，对应失败镜像，按照步骤9人工拉取即可
