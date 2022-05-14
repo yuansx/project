@@ -19,10 +19,7 @@ set autoindent
 set ai!
 set cursorline
 set incsearch
-<<<<<<< HEAD
-=======
 set hlsearch
 set ignorecase
 set showmatch
->>>>>>> 20d248421f4859f0a96a2f35faa7222f99c65956
 
